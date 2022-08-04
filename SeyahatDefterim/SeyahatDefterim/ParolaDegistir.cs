@@ -59,11 +59,12 @@ namespace SeyahatDefterim
 
         public void EskiParoaKontrol()
         {
+            Client musteri =Client.getInstance();
             string sorgu = "select code from user where username=@user and code=@pass";
             con = new SqlConnection(SqlCon);
             cmd = new SqlCommand(sorgu, con);
-            cmd.Parameters.AddWithValue("@user",Client.musteri.getUsername());
-            cmd.Parameters.AddWithValue("@pass", Client.musteri.getPass());
+            cmd.Parameters.AddWithValue("@user",musteri.getUsername());
+            cmd.Parameters.AddWithValue("@pass",musteri.getPass());
             con.Open();
             dr = cmd.ExecuteReader();
 
