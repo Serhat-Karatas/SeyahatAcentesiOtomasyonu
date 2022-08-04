@@ -196,12 +196,13 @@ namespace SeyahatDefterim
 
         private void button1_Click(object sender, EventArgs e) 
         {
-            if (Client.musteri.getBalance() >= Convert.ToInt32(FiyatTextBox.Text))
+            Client musteri =Client.getInstance();
+            if (musteri.getBalance() >= Convert.ToInt32(FiyatTextBox.Text))
             {
                 int doluluk = Convert.ToInt32(DolulukTextBox.Text)+1;
-                int bakiye = Client.musteri.getBalance() - Convert.ToInt32(FiyatTextBox.Text);
-                Client.musteri.set(bakiye,"123");
-                string sql = "update user set balance="+bakiye.ToString()+",user.sID="+ dataGridView1.CurrentRow.Cells[0].Value.ToString() + " where username='"+Client.musteri.getUsername()+"' and code='"+Client.musteri.getPass()+"'";
+                int bakiye = musteri.getBalance() - Convert.ToInt32(FiyatTextBox.Text);
+                musteri.set(bakiye,"123");
+                string sql = "update user set balance="+bakiye.ToString()+",user.sID="+ dataGridView1.CurrentRow.Cells[0].Value.ToString() + " where username='"+musteri.getUsername()+"' and code='"+musteri.getPass()+"'";
                 VeriTabani.KomutYolla(sql);
                 string sql2 = "update Sefer set doluluk=" + doluluk.ToString() + " where hedef='" + HedefTextBox.Text + "' and sID=" + dataGridView1.CurrentRow.Cells[0].Value.ToString() + " ";
                 VeriTabani.KomutYolla(sql2);
