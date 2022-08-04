@@ -80,6 +80,7 @@ namespace SeyahatDefterim
        
         public static bool GirisKontrol(string usr,string sifre)
         {
+            Client musteri =Client.getInstance();
             string sorgu = "select * from user where username=@name and code=@pass";
             con = new SqlConnection(SqlCon);
             cmd = new SqlCommand(sorgu, con);
@@ -92,7 +93,7 @@ namespace SeyahatDefterim
             {
                 string column = dr["admin"].ToString();
                 bool columnValue = Convert.ToBoolean(dr["admin"]);
-                Client.musteri.set(columnValue, "123");
+                musteri.set(columnValue, "123");
                 con.Close();
                 return true;
             }
