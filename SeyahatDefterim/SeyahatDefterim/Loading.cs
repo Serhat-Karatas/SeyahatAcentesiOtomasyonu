@@ -76,7 +76,8 @@ namespace SeyahatDefterim
 
             if (VeriTabani.GirisKontrol(textBox1.Text, textBox2.Text))
             {
-                Client.musteri.set(textBox1.Text, VeriTabani.MD5Sifrele(textBox2.Text), "123");
+                Client musteri =Client.getInstance();
+                musteri.set(textBox1.Text, VeriTabani.MD5Sifrele(textBox2.Text), "123");
                 this.Hide();         
                 Seferler a = new Seferler();
                 a.Show();
