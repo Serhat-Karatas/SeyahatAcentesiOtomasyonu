@@ -9,7 +9,8 @@ namespace SeyahatDefterim
 {
     class Client
     {
-        public static Client musteri=new Client();     //Singleton sınıfını kullanmadan da yapabiliriz.Hatta daha iyi oldu
+        //public static Client musteri=new Client();     //Singleton sınıfını kullanmadan da yapabiliriz.Hatta daha iyi oldu
+        static Client musteri;
         private string username;
         private string pass;
         private int balance;
@@ -17,6 +18,16 @@ namespace SeyahatDefterim
 
         private Client()
         {
+
+        }
+        public static Client getInstance()
+        {
+            if (musteri == null)
+            {
+                musteri = new Client();
+            }
+
+            return musteri;
 
         }
         
